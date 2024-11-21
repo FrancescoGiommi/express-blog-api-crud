@@ -1,6 +1,8 @@
+const postsData = require("../data/posts");
+
 /* Index */
 function index(req, res) {
-  res.json("Lista dei post");
+  res.json(postsData);
 }
 
 /* Show */
@@ -32,4 +34,5 @@ function destroy(req, res) {
   res.json("Cancellazione del post" + " " + id);
 }
 
+/* Esporto tutte le funzioni */
 module.exports = { index, show, create, update, modify, destroy };
