@@ -41,4 +41,5 @@ const bachecaPost = [
   },
 ];
 
+/* Esporto l'Array */
 module.exports = bachecaPost;

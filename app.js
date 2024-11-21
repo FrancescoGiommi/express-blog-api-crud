@@ -76,22 +76,23 @@ Bonus
     Implementare un filtro di ricerca nella index che mostri solo i post che hanno un determinato Tag
     In Show e Destroy, controllare se il parametro si riferisce ad un post esistente, in caso contrario, rispondere con uno stato 404 e un messaggio d’errore, sempre in formato JSON. */
 
-/* Import express */
+/* Importo express */
 const express = require("express");
 const app = express();
 const port = 3000;
 const postsRouter = require("./routers/posts");
 
-/* First route */
+/* Prima route */
 app.get("/", (req, res) => {
   res.send("Server del mio blog");
 });
 
-/* Static asset for images */
+/* Asset statici per le immagini */
 app.use(express.static("images"));
 
 app.use("/posts", postsRouter);
 
+/* Server Online */
 app.listen(port, () => {
   console.log(`Example app listening on port`);
 });

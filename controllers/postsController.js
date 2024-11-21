@@ -1,3 +1,4 @@
+/* Importo l'Array di posts */
 const postsData = require("../data/posts");
 
 /* Index */
