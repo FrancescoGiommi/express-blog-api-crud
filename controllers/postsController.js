@@ -32,7 +32,11 @@ function modify(req, res) {
 /* Delete */
 function destroy(req, res) {
   const id = parseInt(req.params.id);
-  res.json("Cancellazione del post" + " " + id);
+  const posts = postsData.find((post) => post.id == id);
+  const postsIndex = postsData.indexOf(posts);
+  postsData.splice(postsIndex, 1);
+  console.log(postsData);
+  res.status("204").json();
 }
 
 /* Esporto tutte le funzioni */
