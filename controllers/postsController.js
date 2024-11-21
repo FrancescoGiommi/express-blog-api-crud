@@ -8,7 +8,8 @@ function index(req, res) {
 /* Show */
 function show(req, res) {
   const id = parseInt(req.params.id);
-  res.json("Visualizza il post" + " " + id);
+  const posts = postsData.find((post) => post.id == id);
+  res.json(posts);
 }
 
 /* Create */
