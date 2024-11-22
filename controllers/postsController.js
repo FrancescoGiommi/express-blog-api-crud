@@ -8,7 +8,10 @@ function index(req, res) {
 
 /* Show */
 function show(req, res) {
+  /* Recupero l'id e lo trasformo in numero */
   const id = parseInt(req.params.id);
+
+  /* Cerco il post tramite l'id */
   const posts = postsData.find((post) => post.id == id);
   res.json(posts);
 }
@@ -18,6 +21,7 @@ function create(req, res) {
   /* Creo un nuovo id incrementando l'ultimo id presente */
   const newId = postsData[postsData.length - 1].id + 1;
 
+  /* Creo il nuvove oggetto post */
   const newPost = {
     id: newId,
     titolo: req.body.titolo,
@@ -26,15 +30,45 @@ function create(req, res) {
     tags: req.body.tags,
   };
 
+  /* Pusho il nuovo oggetto nell'array */
   postsData.push(newPost);
+
+  /* Imposto lo status a 201 */
   res.status(201);
+
+  /* Restituisco il nuovo post */
   res.json(newPost);
 }
 
 /* Update */
 function update(req, res) {
+  /* Recupero l'id e lo trasformo in numero */
   const id = parseInt(req.params.id);
-  res.json("Modifica completamente il post" + " " + id);
+
+  /* Cerco il post tramite l'id */
+  const post = postsData.find((post) => post.id == id);
+
+  /* Faccio il controllo*/
+  if (!post) {
+    res.status(404);
+
+    return res.json({
+      error: "Not found",
+      message: "Post non trovato",
+    });
+  }
+
+  /* Aggiorno il post */
+  post.titolo = req.body.titolo;
+  post.contenuto = req.body.contenuto;
+  post.immagine = req.body.immagine;
+  post.tags = req.body.tags;
+
+  /* Stampo l'Array in console */
+  console.log(postsData);
+
+  /* Genero il post aggiornato */
+  res.json(post);
 }
 
 /* Modify */
