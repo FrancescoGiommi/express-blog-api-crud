@@ -15,7 +15,8 @@ function show(req, res) {
 
 /* Create */
 function create(req, res) {
-  res.json("Crea il post");
+  console.log(req.body);
+  res.send("Creazione nuova pizza");
 }
 
 /* Update */

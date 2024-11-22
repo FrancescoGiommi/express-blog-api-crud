@@ -79,6 +79,7 @@ Bonus
 //! Giorno 4
 
 /* Milestone 1
+
 Per iniziare, andiamo su Postman e prepariamo una nuova chiamata verso la nostra rotta store.
 
     Impostiamo il verbo e l’endpoint corretti
@@ -126,6 +127,8 @@ const postsRouter = require("./routers/posts");
 app.get("/", (req, res) => {
   res.send("Server del mio blog");
 });
+
+app.use(express.json());
 
 /* Asset statici per le immagini */
 app.use(express.static("images"));
