@@ -13,6 +13,17 @@ function show(req, res) {
 
   /* Cerco il post tramite l'id */
   const posts = postsData.find((post) => post.id == id);
+
+  /* Faccio il controllo*/
+  if (!posts) {
+    res.status(404);
+
+    return res.json({
+      error: "Not found",
+      message: "Post non trovato",
+    });
+  }
+
   res.json(posts);
 }
 
@@ -81,6 +92,17 @@ function modify(req, res) {
 function destroy(req, res) {
   const id = parseInt(req.params.id);
   const posts = postsData.find((post) => post.id == id);
+
+  /* Faccio il controllo*/
+  if (!posts) {
+    res.status(404);
+
+    return res.json({
+      error: "Not found",
+      message: "Post non trovato",
+    });
+  }
+
   const postsIndex = postsData.indexOf(posts);
   postsData.splice(postsIndex, 1);
   console.log(postsData);
