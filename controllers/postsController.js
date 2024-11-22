@@ -30,11 +30,11 @@ function show(req, res) {
 /* Create */
 function create(req, res) {
   /* Creo un nuovo id incrementando l'ultimo id presente */
-  const newId = postsData[postsData.length - 1].id + 1;
+  const id = postsData[postsData.length - 1].id + 1;
 
   /* Creo il nuvove oggetto post */
   const newPost = {
-    id: newId,
+    id: id,
     titolo: req.body.titolo,
     contenuto: req.body.contenuto,
     immagine: req.body.immagine,
