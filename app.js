@@ -128,6 +128,7 @@ app.get("/", (req, res) => {
   res.send("Server del mio blog");
 });
 
+/* Body parser per decifrare il request body */
 app.use(express.json());
 
 /* Asset statici per le immagini */
