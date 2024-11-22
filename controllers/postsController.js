@@ -106,7 +106,9 @@ function destroy(req, res) {
   const postsIndex = postsData.indexOf(posts);
   postsData.splice(postsIndex, 1);
   console.log(postsData);
-  res.status("204").json();
+  res.status("200").json({
+    message: `Post ${id} eliminato`,
+  });
 }
 
 /* Esporto tutte le funzioni */
