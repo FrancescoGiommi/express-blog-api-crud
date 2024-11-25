@@ -38,13 +38,6 @@ function create(req, res) {
     tags: req.body.tags,
   };
 
-  /* Controllo che ci siano tutti  gli elementi */
-  if (!titolo || !contenuto || !immagine || !tags?.length) {
-    const err = new Error("Id post not found");
-    err.code = 404;
-    throw err;
-  }
-
   /* Pusho il nuovo oggetto nell'array */
   postsData.push(newPost);
 
@@ -64,7 +57,7 @@ function update(req, res) {
   const post = postsData.find((post) => post.id == id);
 
   /* Faccio il controllo*/
-  if (!posts) {
+  if (!post) {
     const err = new Error("Id post not found");
     err.code = 404;
     throw err;
@@ -95,6 +88,7 @@ function destroy(req, res) {
   const posts = postsData.find((post) => post.id == id);
 
   /* Faccio il controllo*/
+
   if (!posts) {
     const err = new Error("Id post not found");
     err.code = 404;
