@@ -131,8 +131,15 @@ Bonus
 /* Importo express */
 const express = require("express");
 const app = express();
+
+/* Importo i Middleware */
 const notFound = require("./middlewares/notFound");
+const errorsHandler = require("./middlewares/errorsHandler");
+
+/* Porta in utilizzo */
 const port = 3000;
+
+/* Importo le operazioni CRUD */
 const postsRouter = require("./routers/posts");
 
 /* Prima route */
@@ -149,10 +156,13 @@ app.use(express.static("images"));
 /* Collegamento a tutte le rotte  */
 app.use("/posts", postsRouter);
 
-/* Collegamento Middleware notFound */
+/* notFound Middleware */
 app.use(notFound);
+
+/* errorsHandler Middleware */
+app.use(errorsHandler);
 
 /* Server Online */
 app.listen(port, () => {
-  console.log(`Example app listening on port`);
+  console.log(`App listening on port:${port}`);
 });

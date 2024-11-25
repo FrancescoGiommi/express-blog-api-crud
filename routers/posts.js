@@ -1,6 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const postsController = require("../controllers/postsController");
+const errorsHandler = require("../middlewares/errorsHandler");
+
+router.use(errorsHandler);
 
 /* Operazioni CRUD */
 
