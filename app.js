@@ -117,9 +117,21 @@ Bonus
     Aggiungere un controllo dell'errore per i parametri in ingresso nel body nelle rotte store e update , 
     rispondere con uno stato 400 e un messaggio d’errore, sempre in formato JSON. */
 
+//! Middlewares
+
+/* Dopo aver completato tutte le operazioni CRUD, completiamo le nostre API 
+    inserendo un middleware per la gestione delle rotte non registrate e uno per la gestione degli errori.
+
+    Se viene chiamato un endpoint inesistente, un middleware dovrà rispondere un messaggio
+     e uno status appropriato.
+    
+     Se viene generato un errore, un middleware si occuperà di rispondere con un messaggio
+      e uno status appropriato. */
+
 /* Importo express */
 const express = require("express");
 const app = express();
+const notFound = require("./middlewares/notFound");
 const port = 3000;
 const postsRouter = require("./routers/posts");
 
@@ -134,7 +146,11 @@ app.use(express.json());
 /* Asset statici per le immagini */
 app.use(express.static("images"));
 
+/* Collegamento a tutte le rotte  */
 app.use("/posts", postsRouter);
+
+/* Collegamento Middleware notFound */
+app.use(notFound);
 
 /* Server Online */
 app.listen(port, () => {
